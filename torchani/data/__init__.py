@@ -117,6 +117,7 @@ PROPERTIES = ('energies',)
 
 PADDING = {
     'species': -1,
+    'numbers': -1,
     'coordinates': 0.0,
     'forces': 0.0,
     'energies': 0.0
@@ -372,8 +373,9 @@ def load(path, additional_properties=()):
         for m in molecules():
             species = m['species']
             coordinates = m['coordinates']
+            numbers = m['numbers']
             for i in range(coordinates.shape[0]):
-                ret = {'species': species, 'coordinates': coordinates[i]}
+                ret = {'species': species, 'coordinates': coordinates[i], 'numbers': numbers}
                 for k in properties:
                     if k in m:
                         ret[k] = m[k][i]
